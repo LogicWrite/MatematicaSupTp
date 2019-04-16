@@ -18,8 +18,8 @@ public class ComplexNumber {
                 case POLAR:
                     this.module = a;
                     this.angle = b;
-                    this.a = module*Math.sin(angle);
-                    this.b = module*Math.cos(angle);
+                    this.a = module*Math.cos(angle);
+                    this.b = module*Math.sin(angle);
                     break;
 
             }
@@ -35,6 +35,14 @@ public class ComplexNumber {
             double newX = a - other.getA();
             double newY = b - other.getB();
             return  new ComplexNumber(newX,newY, ComplexType.BINOMICO);
+        }
+
+        String showAsBinomic(){
+            return "(" + a + "," + b + ")";
+        }
+
+        String showAsPolar(){
+            return "[" + module + "," + angle  + "]";
         }
 
         enum ComplexType{
