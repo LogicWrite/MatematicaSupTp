@@ -1,4 +1,5 @@
-import org.jetbrains.annotations.NotNull;
+package dominio;
+//import org.jetbrains.annotations.NotNull;
 
 public class ComplexNumber {
         private double a;
@@ -25,13 +26,13 @@ public class ComplexNumber {
             }
         }
 
-        ComplexNumber plus(@NotNull ComplexNumber other){
+        ComplexNumber plus(/*@NotNull*/ ComplexNumber other){
             double newX = a + other.getA();
             double newY = b + other.getB();
             return  new ComplexNumber(newX,newY, ComplexType.BINOMICO);
         }
 
-        ComplexNumber minus(@NotNull ComplexNumber other){
+        ComplexNumber minus(/*@NotNull*/ ComplexNumber other){
             double newX = a - other.getA();
             double newY = b - other.getB();
             return  new ComplexNumber(newX,newY, ComplexType.BINOMICO);

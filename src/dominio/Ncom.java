@@ -1,3 +1,4 @@
+package dominio;
 import javax.imageio.IIOException;
 import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.io.BufferedReader;
