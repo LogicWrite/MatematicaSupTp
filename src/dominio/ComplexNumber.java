@@ -75,4 +75,21 @@ public class ComplexNumber {
     public double getModule() {
         return module;
     }
+    
+    public ComplexNumber multiplicate(ComplexNumber otroNumeroComplejo){
+    	return new ComplexNumber(this.getModule()*otroNumeroComplejo.getModule(),
+    			this.getAngle() + otroNumeroComplejo.getAngle(),
+    			ComplexType.POLAR);
+    }
+    
+    public ComplexNumber divide(ComplexNumber otroNumeroComplejo){
+    	if(otroNumeroComplejo.getModule() == 0){
+    		throw new ExcepcionDivisionPorCero();
+    	}
+    	return new ComplexNumber(this.getModule() / otroNumeroComplejo.getModule(),
+    			this.getAngle() - otroNumeroComplejo.getAngle(),
+    			ComplexType.POLAR);
+    }
+    
+    
 }
