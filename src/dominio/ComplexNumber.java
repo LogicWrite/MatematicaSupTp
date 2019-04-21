@@ -18,7 +18,7 @@ public class ComplexNumber {
                     break;
                 case POLAR:
                     this.module = a;
-                    this.angle = b;
+                    this.setAngle(b);
                     this.a = module*Math.cos(angle);
                     this.b = module*Math.sin(angle);
                     break;
@@ -71,6 +71,12 @@ public class ComplexNumber {
     public double getAngle() {
         return angle;
     }
+    
+    private void setAngle(double unAngulo) {
+        this.angle = unAngulo;
+        if(angle<0)  angle=2*Math.PI+angle;
+        if(angle>2*Math.PI)  angle= angle % (2*Math.PI);
+    }
 
     public double getModule() {
         return module;
@@ -88,6 +94,31 @@ public class ComplexNumber {
     	}
     	return new ComplexNumber(this.getModule() / otroNumeroComplejo.getModule(),
     			this.getAngle() - otroNumeroComplejo.getAngle(),
+    			ComplexType.POLAR);
+    }
+    
+    private boolean esUnNumeroEntero(double unNumero){
+    	return Math.floor(unNumero) == unNumero;
+    }
+    
+    private boolean esPositivo(double unNumero){
+    	return unNumero > 0;
+    }
+    
+    private boolean esUnNumeroNatural(double unNumero){
+    	return esUnNumeroEntero(unNumero) && esPositivo(unNumero);
+    }
+    
+    private boolean noEsUnNumeroNatural(double unNumero){
+    	return !esUnNumeroNatural(unNumero);
+    }
+
+    public ComplexNumber pow(double unExponente){
+    	if(noEsUnNumeroNatural(unExponente)){
+    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	}
+    	return new ComplexNumber(Math.pow(this.getModule(), unExponente),
+    			this.getAngle() * unExponente,
     			ComplexType.POLAR);
     }
     
