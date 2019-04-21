@@ -1,6 +1,10 @@
 package dominio;
 //import org.jetbrains.annotations.NotNull;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ComplexNumber {
         private double a;
         private double b;
@@ -120,6 +124,54 @@ public class ComplexNumber {
     	return new ComplexNumber(Math.pow(this.getModule(), unExponente),
     			this.getAngle() * unExponente,
     			ComplexType.POLAR);
+    }
+    
+    
+    public List<ComplexNumber> root(double unRadicando){
+    	if(noEsUnNumeroNatural(unRadicando)){
+    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	}
+    	List<ComplexNumber> raices = new ArrayList<ComplexNumber>();
+    	for(int k=0; k < unRadicando; k++){
+    		raices.add(new ComplexNumber(Math.pow(this.getModule(), 1/unRadicando),
+    				(this.getAngle()+ 2*k*Math.PI) / unRadicando,
+    				ComplexType.POLAR));
+    	}
+    	return raices;
+    }
+    
+    private int maximoComunDivisor(int unNumero, int otroNumero){
+    	return BigInteger.valueOf(unNumero).gcd(BigInteger.valueOf(otroNumero)).intValue();
+    }
+    
+    public List<ComplexNumber> raicesPrimitivas(double unRadicando){
+    	if(noEsUnNumeroNatural(unRadicando)){
+    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	}
+    	List<ComplexNumber> raicesPrimitivas = new ArrayList<ComplexNumber>();
+    	for(int k=0; k < unRadicando; k++){
+    		if(maximoComunDivisor((int)unRadicando, k) == 1){
+    			raicesPrimitivas.add(new ComplexNumber(Math.pow(this.getModule(), 1/unRadicando),
+        				(this.getAngle()+ 2*k*Math.PI) / unRadicando,
+        				ComplexType.POLAR));
+    		}
+    	}
+    	return raicesPrimitivas;
+    }
+    
+    public List<ComplexNumber> raicesNoPrimitivas(double unRadicando){
+    	if(noEsUnNumeroNatural(unRadicando)){
+    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	}
+    	List<ComplexNumber> raicesNoPrimitivas = new ArrayList<ComplexNumber>();
+    	for(int k=0; k < unRadicando; k++){
+    		if(maximoComunDivisor((int)unRadicando, k) != 1){
+    			raicesNoPrimitivas.add(new ComplexNumber(Math.pow(this.getModule(), 1/unRadicando),
+        				(this.getAngle()+ 2*k*Math.PI) / unRadicando,
+        				ComplexType.POLAR));
+    		}
+    	}
+    	return raicesNoPrimitivas;
     }
     
     
