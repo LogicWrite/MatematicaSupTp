@@ -1,5 +1,5 @@
 package dominio;
-import dominio.ComplexNumber.ComplexType;;
+import dominio.ComplexNumber.ComplexType;
 
 public class Fasor {
 
@@ -13,6 +13,27 @@ public class Fasor {
 		this.fase = unaFase;
 		this.amplitud = unaAmplitud;
 		this.funcionTrigonometrica = unaFuncionTrigonometrica;
+	}
+	
+	public String mostrarFasor(){
+		String cadena;
+		cadena = this.getAmplitud() + "*";
+		if(this.getFuncionTrigonometrica() == FuncionTrigonometrica.SENO){
+			cadena = cadena.concat("sen(");
+		}
+		else{
+			cadena = cadena.concat("cos(");
+		}
+		cadena = cadena.concat(this.getFrecuencia() + "*t");
+		if(this.getFase()>=0){
+			cadena = cadena.concat(" + ");
+			cadena = cadena.concat(this.getFase() + ")");
+		}
+		else{
+			cadena = cadena.concat(" - ");
+			cadena = cadena.concat(this.getFase()*(-1) + ")");
+		}
+		return cadena;
 	}
 
 	public double getFrecuencia() {
