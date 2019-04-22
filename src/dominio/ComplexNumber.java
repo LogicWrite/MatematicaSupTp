@@ -89,18 +89,18 @@ public class ComplexNumber {
     }
     
     public ComplexNumber multiply(ComplexNumber otroNumeroComplejo, ComplexType type) {
-        if(type == ComplexType.BINOMICO)
+        /*if(type == ComplexType.BINOMICO)
             return new ComplexNumber(this.getA()*otroNumeroComplejo.getA() - this.getB()*otroNumeroComplejo.getB(),
                     this.getA()*otroNumeroComplejo.getB() + otroNumeroComplejo.getA()*this.getB(),
                     ComplexType.BINOMICO);
-        else
+        else*/
     	    return new ComplexNumber(this.getModule()*otroNumeroComplejo.getModule(),
     			this.getAngle() + otroNumeroComplejo.getAngle(),
     			ComplexType.POLAR);
     }
     
     public ComplexNumber divide(ComplexNumber otroNumeroComplejo, ComplexType type){
-        if(type == ComplexType.BINOMICO)
+        /*if(type == ComplexType.BINOMICO)
             if((Math.pow(otroNumeroComplejo.getA(),2) + Math.pow(otroNumeroComplejo.getB(),2)) == 0.0)
                 throw new ExcepcionDivisionPorCero();
             else {
@@ -111,14 +111,15 @@ public class ComplexNumber {
 
                 return new ComplexNumber(newX,newY, ComplexType.BINOMICO);
             }
-        else {
+        else {*/
             if (otroNumeroComplejo.getModule() == 0) {
                 throw new ExcepcionDivisionPorCero();
             }
+            
             return new ComplexNumber(this.getModule() / otroNumeroComplejo.getModule(),
                     this.getAngle() - otroNumeroComplejo.getAngle(),
                     ComplexType.POLAR);
-        }
+        //}
     }
     
     private boolean esUnNumeroEntero(double unNumero){
