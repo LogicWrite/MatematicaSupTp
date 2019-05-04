@@ -1,0 +1,5 @@
+# IntelliJ files
+.classpath
+.project
+Matematica Superior.iml
+.idea/*
