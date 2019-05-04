@@ -1,5 +1,7 @@
-# IntelliJ files
+# Ignored files
 .classpath
 .project
 Matematica Superior.iml
 .idea/*
+bin/*
+old/*

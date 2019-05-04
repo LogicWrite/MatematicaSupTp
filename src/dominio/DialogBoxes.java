@@ -124,7 +124,7 @@ public class DialogBoxes {
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Resultado");
-        window.setMinWidth(300);
+        window.setMinWidth(200);
         window.setMinHeight(100);
 
 
@@ -139,7 +139,7 @@ public class DialogBoxes {
         VBox layout1 = new VBox(10);
         layout1.setPadding(new Insets(10, 10, 10,10 ));
         layout1.getChildren().addAll(label1, label2, bPolar);
-        scene1 = new Scene(layout1, 300, 100);
+        scene1 = new Scene(layout1, 200, 100);
 
 
         //Layout2
@@ -153,7 +153,7 @@ public class DialogBoxes {
         VBox layout2 = new VBox(10);
         layout2.setPadding(new Insets(10, 10, 10,10 ));
         layout2.getChildren().addAll(label3, label4, bBinomic);
-        scene2 = new Scene(layout2, 300, 100);
+        scene2 = new Scene(layout2, 200, 100);
 
 
         bPolar.setOnAction(e -> window.setScene(scene2));

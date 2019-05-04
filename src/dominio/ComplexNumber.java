@@ -5,11 +5,14 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.text.DecimalFormat;
+
 public class ComplexNumber {
         private double a;
         private double b;
         private double module;
         private double angle; //Rads
+
         public ComplexNumber(double a, double b, ComplexType type){
             //Se setean las variables desde el principio y no hay que molestarse por acualizarlas ya que sera un objeto
             //inmutable
@@ -43,11 +46,13 @@ public class ComplexNumber {
         }
 
         String showAsBinomic(){
-            return "(" + a + "," + b + ")";
+            DecimalFormat df = new DecimalFormat("#.######");
+            return "(" + df.format(a) + "," + df.format(b) + ")";
         }
 
         String showAsPolar(){
-            return "[" + module + "," + angle  + "]";
+            DecimalFormat df = new DecimalFormat("#.######");
+            return "[" + df.format(module) + "," + df.format(angle)  + "]";
         }
 
         enum ComplexType{
@@ -88,38 +93,20 @@ public class ComplexNumber {
         return module;
     }
     
-    public ComplexNumber multiply(ComplexNumber otroNumeroComplejo, ComplexType type) {
-        /*if(type == ComplexType.BINOMICO)
-            return new ComplexNumber(this.getA()*otroNumeroComplejo.getA() - this.getB()*otroNumeroComplejo.getB(),
-                    this.getA()*otroNumeroComplejo.getB() + otroNumeroComplejo.getA()*this.getB(),
-                    ComplexType.BINOMICO);
-        else*/
-    	    return new ComplexNumber(this.getModule()*otroNumeroComplejo.getModule(),
-    			this.getAngle() + otroNumeroComplejo.getAngle(),
-    			ComplexType.POLAR);
+    public ComplexNumber multiply(ComplexNumber otroNumeroComplejo) {
+        return new ComplexNumber(this.getModule()*otroNumeroComplejo.getModule(),
+            this.getAngle() + otroNumeroComplejo.getAngle(),
+            ComplexType.POLAR);
     }
     
-    public ComplexNumber divide(ComplexNumber otroNumeroComplejo, ComplexType type){
-        /*if(type == ComplexType.BINOMICO)
-            if((Math.pow(otroNumeroComplejo.getA(),2) + Math.pow(otroNumeroComplejo.getB(),2)) == 0.0)
-                throw new ExcepcionDivisionPorCero();
-            else {
-                double newX = (this.getA()*otroNumeroComplejo.getA() + this.getB()*otroNumeroComplejo.getB()) /
-                        (Math.pow(otroNumeroComplejo.getA(),2) + Math.pow(otroNumeroComplejo.getB(),2));
-                double newY = (this.getA()*(-otroNumeroComplejo.getB()) + this.getB()*otroNumeroComplejo.getA()) /
-                        (Math.pow(otroNumeroComplejo.getA(),2) + Math.pow(otroNumeroComplejo.getB(),2));
+    public ComplexNumber divide(ComplexNumber otroNumeroComplejo){
+        if (otroNumeroComplejo.getModule() == 0) {
+            throw new ExcepcionDivisionPorCero();
+        }
 
-                return new ComplexNumber(newX,newY, ComplexType.BINOMICO);
-            }
-        else {*/
-            if (otroNumeroComplejo.getModule() == 0) {
-                throw new ExcepcionDivisionPorCero();
-            }
-            
-            return new ComplexNumber(this.getModule() / otroNumeroComplejo.getModule(),
-                    this.getAngle() - otroNumeroComplejo.getAngle(),
-                    ComplexType.POLAR);
-        //}
+        return new ComplexNumber(this.getModule() / otroNumeroComplejo.getModule(),
+                this.getAngle() - otroNumeroComplejo.getAngle(),
+                ComplexType.POLAR);
     }
     
     private boolean esUnNumeroEntero(double unNumero){
