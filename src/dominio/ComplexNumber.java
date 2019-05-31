@@ -4,7 +4,6 @@ package dominio;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.text.DecimalFormat;
 
 public class ComplexNumber {
