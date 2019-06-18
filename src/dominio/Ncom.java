@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 
 public class Ncom extends Application {
     Stage window;
-    //Button bSum, bSubtract, bMultiply, bDivide, bPow, bRoot, bCalcRoot, bSumPhasor, bMinusPhasor;
     Button bSum, bSubtract, bMultiply, bDivide, bPow, bRoot, bSumPhasor, bMinusPhasor;
     double a, b;
 
@@ -28,7 +27,8 @@ public class Ncom extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        window.setTitle("Numeros Complejos");
+        window.setTitle("Números Complejos");
+        window.resizableProperty().setValue(Boolean.FALSE);
 
         bSum = new Button("Sumar");
         bSum.setMinWidth(250);

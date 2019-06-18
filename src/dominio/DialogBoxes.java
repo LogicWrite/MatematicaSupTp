@@ -11,18 +11,18 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class DialogBoxes {
-    //static ComplexNumber.ComplexType answer;
-    //static FuncionTrigonometrica function;
-
     public static ComplexNumber.ComplexType chooseCNType() {
         AtomicReference<ComplexNumber.ComplexType> answer = new AtomicReference<>();
 
         Stage window = new Stage();
 
+        window.resizableProperty().setValue(Boolean.FALSE);
+        window.setOnCloseRequest(e -> e.consume());
+
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Suma de números complejos");
         window.setMinWidth(450);
-        window.setMinHeight(150);
+        window.setMinHeight(135);
 
         Label label = new Label("Por favor, elija qué tipo de número complejo desea ingresar para la operación");
 
@@ -52,73 +52,87 @@ public class DialogBoxes {
     }
 
     public static double insertComplexFirstPart(ComplexNumber.ComplexType type) {
-        AtomicReference<Double> a = new AtomicReference<>((double) 0);
+        //AtomicReference<Double> a = new AtomicReference<>((double) 0);
+        AtomicReference<Double> a = new AtomicReference<>(Double.NaN);
 
-        Stage window = new Stage();
+        do {
+            Stage window = new Stage();
 
-        window.initModality(Modality.APPLICATION_MODAL);
+            window.setOnCloseRequest(e -> e.consume());
+            window.resizableProperty().setValue(Boolean.FALSE);
 
-        if(type == ComplexNumber.ComplexType.BINOMICO)
-            window.setTitle("Parte real");
-        else
-            window.setTitle("Módulo");
+            window.initModality(Modality.APPLICATION_MODAL);
 
-        window.setMinWidth(300);
-        window.setMinHeight(100);
+            if (type == ComplexNumber.ComplexType.BINOMICO)
+                window.setTitle("Parte real");
+            else
+                window.setTitle("Módulo");
 
-        TextField complexInput = new TextField();
-        Button bAccept = new Button("Aceptar");
+            //window.setMinWidth(300);
+            //window.setMinHeight(100);
 
-        bAccept.setOnAction(e -> {
-            if (isDouble(complexInput.getText()))
-                a.set(Double.parseDouble(complexInput.getText()));
-            window.close();
-        });
+            TextField complexInput = new TextField();
+            Button bAccept = new Button("Aceptar");
 
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(10, 10, 10,10 ));
-        layout.getChildren().addAll(complexInput, bAccept);
+            bAccept.setOnAction(e -> {
+                if (isDouble(complexInput.getText()))
+                    a.set(Double.parseDouble(complexInput.getText()));
 
-        Scene scene = new Scene(layout, 300, 100);
-        window.setScene(scene);
-        window.showAndWait();
+                window.close();
+            });
+
+            VBox layout = new VBox(10);
+            layout.setPadding(new Insets(10, 10, 10, 10));
+            layout.getChildren().addAll(complexInput, bAccept);
+
+            Scene scene = new Scene(layout, 300, 80);
+            window.setScene(scene);
+            window.showAndWait();
+        }
+        while(Double.isNaN(a.get()));
 
         return a.get();
     }
 
     public static double insertComplexSecondPart(ComplexNumber.ComplexType type) {
-        AtomicReference<Double> b = new AtomicReference<>((double) 0);
-        Button bAccept;
-        Scene scene;
+        //AtomicReference<Double> b = new AtomicReference<>((double) 0);
+        AtomicReference<Double> b = new AtomicReference<>(Double.NaN);
 
-        Stage window = new Stage();
+        do {
+            Stage window = new Stage();
 
-        window.initModality(Modality.APPLICATION_MODAL);
+            window.setOnCloseRequest(e -> e.consume());
+            window.resizableProperty().setValue(Boolean.FALSE);
 
-        window.setMinWidth(300);
-        window.setMinHeight(100);
+            window.initModality(Modality.APPLICATION_MODAL);
 
-        TextField complexInput = new TextField();
-        bAccept = new Button("Aceptar");
+            //window.setMinWidth(300);
+            //window.setMinHeight(100);
 
-        if(type == ComplexNumber.ComplexType.BINOMICO)
-            window.setTitle("Parte imaginaria");
-        else
-            window.setTitle("Argumento");
+            TextField complexInput = new TextField();
+            Button bAccept = new Button("Aceptar");
 
-        bAccept.setOnAction(e -> {
-            if (isDouble(complexInput.getText()))
-                b.set(Double.parseDouble(complexInput.getText()));
-            window.close();
-        });
+            if (type == ComplexNumber.ComplexType.BINOMICO)
+                window.setTitle("Parte imaginaria");
+            else
+                window.setTitle("Argumento");
 
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(10, 10, 10,10 ));
-        layout.getChildren().addAll(complexInput, bAccept);
+            bAccept.setOnAction(e -> {
+                if (isDouble(complexInput.getText()))
+                    b.set(Double.parseDouble(complexInput.getText()));
 
-        scene = new Scene(layout, 300, 100);
-        window.setScene(scene);
-        window.showAndWait();
+                window.close();
+            });
+
+            VBox layout = new VBox(10);
+            layout.setPadding(new Insets(10, 10, 10, 10));
+            layout.getChildren().addAll(complexInput, bAccept);
+
+            Scene scene = new Scene(layout, 300, 80);
+            window.setScene(scene);
+            window.showAndWait();
+        }
+        while(Double.isNaN(b.get()));
 
         return b.get();
     }
@@ -127,11 +141,16 @@ public class DialogBoxes {
         Scene scene1, scene2;
 
         Stage window = new Stage();
+        double width = 210, height = 100;
 
+        window.setMinWidth(100);
+        window.setMinHeight(100);
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Resultado");
-        window.setMinWidth(200);
-        window.setMinHeight(100);
+
+        //window.resizableProperty().setValue(Boolean.FALSE);
+        //window.setResizable(Boolean.FALSE);
+        //window.setMaximized(Boolean.FALSE);
 
 
         //Layout1
@@ -140,12 +159,12 @@ public class DialogBoxes {
 
         Button bPolar = new Button("Polar");
         bPolar.setMinWidth(70);
-        bPolar.setAlignment(Pos.BOTTOM_CENTER);
+        //bPolar.setAlignment(Pos.BOTTOM_CENTER);
 
         VBox layout1 = new VBox(10);
         layout1.setPadding(new Insets(10, 10, 10,10 ));
         layout1.getChildren().addAll(label1, label2, bPolar);
-        scene1 = new Scene(layout1, 200, 100);
+        scene1 = new Scene(layout1, width, height);
 
 
         //Layout2
@@ -154,12 +173,12 @@ public class DialogBoxes {
 
         Button bBinomic = new Button("Binómico");
         bBinomic.setMinWidth(70);
-        bBinomic.setAlignment(Pos.CENTER);
+        //bBinomic.setAlignment(Pos.BOTTOM_CENTER);
 
         VBox layout2 = new VBox(10);
         layout2.setPadding(new Insets(10, 10, 10,10 ));
         layout2.getChildren().addAll(label3, label4, bBinomic);
-        scene2 = new Scene(layout2, 200, 100);
+        scene2 = new Scene(layout2, width, height);
 
 
         bPolar.setOnAction(e -> window.setScene(scene2));
@@ -287,10 +306,13 @@ public class DialogBoxes {
 
         Stage window = new Stage();
 
+        window.resizableProperty().setValue(Boolean.FALSE);
+        window.setOnCloseRequest(e -> e.consume());
+
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Suma de fasores");
-        window.setMinWidth(350);
-        window.setMinHeight(150);
+        //window.setMinWidth(350);
+        //window.setMinHeight(150);
 
         Label label = new Label("Por favor, elija qué función desea ingresar para la operación");
 
@@ -312,7 +334,7 @@ public class DialogBoxes {
         layout.getChildren().addAll(label, sineButton, cosineButton);
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(layout);
+        Scene scene = new Scene(layout, 330, 100);
         window.setScene(scene);
         window.showAndWait();
 
@@ -320,49 +342,57 @@ public class DialogBoxes {
     }
 
     public static double insertDouble(InsertionOption option) {
-        AtomicReference<Double> value = new AtomicReference<>((double) 0);
+        //AtomicReference<Double> value = new AtomicReference<>((double) 0);
+        AtomicReference<Double> value = new AtomicReference<>(Double.NaN);
 
-        Stage window = new Stage();
+        do {
+            Stage window = new Stage();
 
-        window.initModality(Modality.APPLICATION_MODAL);
+            window.setOnCloseRequest(e -> e.consume());
+            window.resizableProperty().setValue(Boolean.FALSE);
 
-        switch(option) {
-            case EXPONENT:
-                window.setTitle("Exponente");
-                break;
-            case INDEX:
-                window.setTitle("Índice");
-                break;
-            case AMPLITUDE:
-                window.setTitle("Amplitud");
-                break;
-            case FREQUENCY:
-                window.setTitle("Frecuencia");
-                break;
-            case PHASE:
-                window.setTitle("Fase");
-                break;
+            window.initModality(Modality.APPLICATION_MODAL);
+
+            switch (option) {
+                case EXPONENT:
+                    window.setTitle("Exponente");
+                    break;
+                case INDEX:
+                    window.setTitle("Índice");
+                    break;
+                case AMPLITUDE:
+                    window.setTitle("Amplitud");
+                    break;
+                case FREQUENCY:
+                    window.setTitle("Frecuencia");
+                    break;
+                case PHASE:
+                    window.setTitle("Fase");
+                    break;
+            }
+
+            window.setMinWidth(300);
+            window.setMinHeight(100);
+
+            TextField complexInput = new TextField();
+            Button bAccept = new Button("Aceptar");
+
+            bAccept.setOnAction(e -> {
+                if (isDouble(complexInput.getText()))
+                    value.set(Double.parseDouble(complexInput.getText()));
+
+                window.close();
+            });
+
+            VBox layout = new VBox(10);
+            layout.setPadding(new Insets(10, 10, 10, 10));
+            layout.getChildren().addAll(complexInput, bAccept);
+
+            Scene scene = new Scene(layout, 300, 80);
+            window.setScene(scene);
+            window.showAndWait();
         }
-
-        window.setMinWidth(300);
-        window.setMinHeight(100);
-
-        TextField complexInput = new TextField();
-        Button bAccept = new Button("Aceptar");
-
-        bAccept.setOnAction(e -> {
-            if (isDouble(complexInput.getText()))
-                value.set(Double.parseDouble(complexInput.getText()));
-            window.close();
-        });
-
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(10, 10, 10,10 ));
-        layout.getChildren().addAll(complexInput, bAccept);
-
-        Scene scene = new Scene(layout, 300, 100);
-        window.setScene(scene);
-        window.showAndWait();
+        while(Double.isNaN(value.get()));
 
         return value.get();
     }
@@ -456,12 +486,42 @@ public class DialogBoxes {
         window.showAndWait();
     }
 
+    public static void showError(String errorMessage) {
+        int width = 370, height = 80;
+        Scene scene;
+
+        Stage window = new Stage();
+
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Error");
+        window.setMinWidth(width);
+        window.setMinHeight(height);
+
+        Label label1 = new Label(errorMessage);
+
+        Button bOk = new Button("Aceptar");
+        //bOk.setMinWidth(20);
+        //bOk.setAlignment(Pos.BOTTOM_CENTER);
+
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(10, 10, 10,10 ));
+        layout.getChildren().addAll(label1, bOk);
+        scene = new Scene(layout, width, height);
+
+        bOk.setOnAction(e -> {
+            window.close();
+        });
+
+        window.setScene(scene);
+        window.showAndWait();
+    }
+
     public static boolean isDouble(String value) {
         try {
             double a = Double.parseDouble(value);
             return true;
         } catch(NumberFormatException e) {
-            //VENTANA DE ERROR
+            showError("El valor ingresado no es un número. Por favor, ingrese un número.");
             return false;
         }
     }
