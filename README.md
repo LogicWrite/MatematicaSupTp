@@ -79,7 +79,7 @@ Una vez ingresado ambos operandos, se presenta la solución la cual tiene posibi
 
 ![enter image description here](https://github.com/LogicWrite/MatematicaSupTp/blob/master/man/17.jpg?raw=true)
 
-Para más información en la utilización de la herramienta NCOM, escribir un mail a cualquiera de sus desarrolladores:
+Para más información en la utilización de la herramienta NCOM, escribir un mail a cualquiera de sus desarrolladores:\
 Blacutt Nedbal, Matías Ariel 163.718-6 matiasblacutt16@gmail.com\
 Miravalles, Emanuel Gonzalo 127.099-0 emanuelmiravalles@gmail.com\
 Pugliese, Ignacio 163.709-5 ignpugliese@gmail.com
