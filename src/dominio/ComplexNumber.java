@@ -102,6 +102,7 @@ public class ComplexNumber {
     
     public ComplexNumber divide(ComplexNumber otroNumeroComplejo){
         if (otroNumeroComplejo.getModule() == 0) {
+            DialogBoxes.showError("No es posible realizar la operación ya que se intentó dividir por cero.", 390, 80);
             throw new ExcepcionDivisionPorCero();
         }
 
@@ -127,15 +128,19 @@ public class ComplexNumber {
     }
 
     public ComplexNumber pow(double unExponente){
-    	if(noEsUnNumeroNatural(unExponente))
-    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	if(noEsUnNumeroNatural(unExponente)) {
+            DialogBoxes.showError("No es posible realizar la operación ya que no se ingresó un número natural.", 420, 80);
+            throw new ExcepcionDebeSerUnNumeroNatural();
+        }
 
     	return new ComplexNumber(Math.pow(this.getModule(), unExponente), this.getAngle() * unExponente, ComplexType.POLAR);
     }
 
     public List<ComplexNumber> root(double unIndice) {
-    	if(noEsUnNumeroNatural(unIndice))
-    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	if(noEsUnNumeroNatural(unIndice)) {
+            DialogBoxes.showError("No es posible realizar la operación ya que no se ingresó un número natural.", 420, 80);
+            throw new ExcepcionDebeSerUnNumeroNatural();
+        }
 
     	List<ComplexNumber> raices = new ArrayList<ComplexNumber>();
     	for(int k = 0; k < unIndice; k++)
@@ -150,8 +155,10 @@ public class ComplexNumber {
     }
     
     public List<ComplexNumber> raicesPrimitivas(double unIndice) {
-    	if(noEsUnNumeroNatural(unIndice))
-    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	if(noEsUnNumeroNatural(unIndice)) {
+            DialogBoxes.showError("No es posible realizar la operación ya que no se ingresó un número natural.", 420, 80);
+            throw new ExcepcionDebeSerUnNumeroNatural();
+        }
 
     	List<ComplexNumber> raicesPrimitivas = new ArrayList<ComplexNumber>();
     	for(int k=0; k < unIndice; k++)
@@ -163,8 +170,10 @@ public class ComplexNumber {
     }
     
     public List<ComplexNumber> raicesNoPrimitivas(double unIndice) {
-    	if(noEsUnNumeroNatural(unIndice))
-    		throw new ExcepcionDebeSerUnNumeroNatural();
+    	if(noEsUnNumeroNatural(unIndice)) {
+            DialogBoxes.showError("No es posible realizar la operación ya que no se ingresó un número natural.", 420, 80);
+            throw new ExcepcionDebeSerUnNumeroNatural();
+        }
 
     	List<ComplexNumber> raicesNoPrimitivas = new ArrayList<ComplexNumber>();
     	for(int k=0; k < unIndice; k++)

@@ -115,8 +115,10 @@ public class Fasor {
 	}
 	
 	public Fasor plus(Fasor unFasor){
-		if(noPuedenSumarseoRestarse(unFasor))
+		if(noPuedenSumarseoRestarse(unFasor)) {
+			DialogBoxes.showError("No es posible realizar la operación ya que las frecuencias son distintas.", 400, 80);
 			throw new ExcepcionPorSumaDeFasoresInvalidaPorFrecuenciasDistintas();
+		}
 
 		if(noTienenLaMismaFuncionTrigonometrica(unFasor)) {
 			unFasor.pasateDeFuncionTrigonometrica();
@@ -133,8 +135,10 @@ public class Fasor {
 	}
 	
 	public Fasor minus(Fasor unFasor) {
-		if(noPuedenSumarseoRestarse(unFasor))
+		if(noPuedenSumarseoRestarse(unFasor)) {
+			DialogBoxes.showError("No es posible realizar la operación ya que las frecuencias son distintas.", 400, 80);
 			throw new ExcepcionPorSumaDeFasoresInvalidaPorFrecuenciasDistintas();
+		}
 
 		if(noTienenLaMismaFuncionTrigonometrica(unFasor)) {
 			unFasor.pasateDeFuncionTrigonometrica();

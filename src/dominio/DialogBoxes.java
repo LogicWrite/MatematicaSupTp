@@ -148,10 +148,6 @@ public class DialogBoxes {
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Resultado");
 
-        //window.resizableProperty().setValue(Boolean.FALSE);
-        //window.setResizable(Boolean.FALSE);
-        //window.setMaximized(Boolean.FALSE);
-
 
         //Layout1
         Label label1 = new Label("El resultado de la operación es:");
@@ -486,8 +482,8 @@ public class DialogBoxes {
         window.showAndWait();
     }
 
-    public static void showError(String errorMessage) {
-        int width = 370, height = 80;
+    public static void showError(String errorMessage, double width, double height) {
+        //double width = 370, height = 80;
         Scene scene;
 
         Stage window = new Stage();
@@ -521,7 +517,7 @@ public class DialogBoxes {
             double a = Double.parseDouble(value);
             return true;
         } catch(NumberFormatException e) {
-            showError("El valor ingresado no es un número. Por favor, ingrese un número.");
+            showError("El valor ingresado no es un número. Por favor, ingrese un número.", 370, 80);
             return false;
         }
     }
