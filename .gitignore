@@ -4,4 +4,6 @@
 Matematica Superior.iml
 .idea/*
 bin/*
+classes/*
 old/*
+src/META-INF/*
