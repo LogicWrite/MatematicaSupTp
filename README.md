@@ -1,7 +1,7 @@
-﻿# Documentación NCOM: 
+﻿# Manual de Usuario NCOM 
 
 
-## Instalación:
+## Instalación
 
 Descargar el proyecto y ejecutar el archivo MatematicaSuperior.exe ubicado en la carpeta exe.
 
@@ -13,11 +13,11 @@ La aplicación es capaz de realizar distintas operaciones con números complejos
 
 ![](https://github.com/LogicWrite/MatematicaSupTp/blob/master/man/01.jpg?raw=true)
 
-La interfaz es muy sensilla. Para realizar una operación entre dos números complejos, solo es cuestión de presionar el boton correspondiente a la operación deseada e ingresar los datos que se le soliciten.
+La interfaz es muy sencilla. Para realizar una operación entre dos números complejos, solo es cuestión de presionar el botón correspondiente a la operación deseada e ingresar los datos que se le soliciten.
 
 ## ¿Cómo realizar una operación con NCOM?
 
-Para realizar una operación entre dos números complejos primero debe hacerse click sobre alguna de las posibles operaciones. En este caso se utilizará la potenciacion.
+Para realizar una operación entre dos números complejos primero debe hacerse click sobre alguna de las posibles operaciones. En este caso se utilizará la potenciación.
 
 ### El ingreso de números complejos
 
@@ -25,8 +25,8 @@ Para realizar una operación entre dos números complejos primero debe hacerse c
 
 A lo largo del proceso de la utilización de la herramienta NCOM, se le pedirá que ingrese los distintos operandos de ser oportuno. Al hacerlo, se le pedirá que especifique de qué forma desea ingresar cada uno de los operandos.
 
-#### Forma binómico
-Si se escoje ingresar el número en forma binómica se le presentará primero un input para que ingrese la parte real del número.
+#### Forma binómica
+Si se escoge ingresar el número en forma binómica se le presentará primero un input para que ingrese la parte real del número.
 
 ![enter image description here](https://github.com/LogicWrite/MatematicaSupTp/blob/master/man/03.jpg?raw=true)
 
@@ -51,14 +51,14 @@ Una vez haya seguido correctamente los pasos, se le presentará el resultado de 
 
 ![enter image description here](https://github.com/LogicWrite/MatematicaSupTp/blob/master/man/07.jpg?raw=true)
 
-*Dependiendo de la operación, luego de ingresar el primer complejo, el segundo operando que puede llegar a pedir NCOM puede variar. Siendo la suma, resta, división y multiplicación de otro número complejo el cual debe ingresarse de la misma forma en la que fue ingresado el primero*
+*Dependiendo de la operación, luego de ingresar el primer complejo, el segundo operando que puede llegar a pedir NCOM puede variar. Siendo la suma, resta, división y multiplicación de otro número complejo el cual debe ingresarse de la misma forma en la que fue ingresado el primero.*
 
 ## Suma y resta de fasores
 
-Además de operar con complejos, NCOM puede realizar suma y resta de fasores. Los cuales son las últimas dos operaciones en la lista de operaciones del menu principal de NCOM.
+Además de operar con complejos, NCOM puede realizar suma y resta de fasores. Los cuales son las últimas dos operaciones en la lista de operaciones del menú principal de NCOM.
 
 Para ejemplificar como se debe utilizar, solo se mostrará la suma pero para la resta el ingreso de datos se realiza exactamente igual.
-Primero se elige con que función sinusoide se va a trabajar.
+Primero, se elige con qué función sinusoide se va a trabajar.
 
 ![enter image description here](https://github.com/LogicWrite/MatematicaSupTp/blob/master/man/13.jpg?raw=true)
 
@@ -80,6 +80,6 @@ Una vez ingresado ambos operandos, se presenta la solución la cual tiene posibi
 ![enter image description here](https://github.com/LogicWrite/MatematicaSupTp/blob/master/man/17.jpg?raw=true)
 
 Para más información en la utilización de la herramienta NCOM, escribir un mail a cualquiera de sus desarrolladores:
-Blacutt Nedbal, Matías Ariel 163.718-6 matiasblacutt16@gmail.com
-Miravalles, Emanuel Gonzalo 127.099-0 emanuelmiravalles@gmail.com
+Blacutt Nedbal, Matías Ariel 163.718-6 matiasblacutt16@gmail.com\
+Miravalles, Emanuel Gonzalo 127.099-0 emanuelmiravalles@gmail.com\
 Pugliese, Ignacio 163.709-5 ignpugliese@gmail.com
